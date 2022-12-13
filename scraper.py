@@ -38,7 +38,7 @@ class Scraper:
         table = soup.find('table', class_='calendar__table')
 
         # Date of Event
-        date_of_events = table.find_next('tr', class_='calendar__row--new-day').find_next('span', class_='date')
+        date_of_events = table.find('tr', class_='calendar__row--new-day').find('span', class_='date')
 
         # Regualr Expression to find the 'day of week', 'month' and the 'day'
         matchObj = re.search('([a-zA-Z]{3})([a-zA-Z]{3}) ([0-9]{1,2})', date_of_events.text)
@@ -84,7 +84,7 @@ class Scraper:
         table = soup.find('table', class_='calendar__table')
 
         # Date of Event
-        date_of_events = table.find_next('tr', class_='calendar__row--new-day').find_next('span', class_='date')
+        date_of_events = table.find('tr', class_='calendar__row--new-day').find('span', class_='date')
 
         # Regualr Expression to find the 'day of week', 'month' and the 'day'
         matchObj = re.search('([a-zA-Z]{3})([a-zA-Z]{3}) ([0-9]{1,2})', date_of_events.text)
@@ -115,7 +115,7 @@ class Scraper:
             print('Successfully retrieved all data')
             return True
         else:
-            scrape_next_day = soup.find('div', class_='head').find_next('a', class_='calendar__pagination--next')[
+            scrape_next_day = soup.find('div', class_='head').find('a', class_='calendar__pagination--next')[
                 'href']
             self.getEventsCalendar(scrape_next_day, end_date)
 
@@ -130,9 +130,9 @@ class Scraper:
 
                 parentId = parent['data-eventid']
                 curr = news.find_next_sibling('td', class_='currency').text.strip()
-                impact = news.find_next_sibling('td', class_='impact').find_next('span')['class']
+                impact = news.find_next_sibling('td', class_='impact').find('span')['class']
                 impact = impact[0]
-                event = news.find_next_sibling('td', class_='event').find_next('span').text.strip()
+                event = news.find_next_sibling('td', class_='event').find('span').text.strip()
                 previous = news.find_next_sibling('td', class_='previous').text
                 forecast = news.find_next_sibling('td', class_='forecast').text
                 actual = news.find_next_sibling('td', class_='actual').text
