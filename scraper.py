@@ -5,13 +5,10 @@ import sqlite3
 import sys
 from configparser import ConfigParser
 from datetime import date, timedelta, datetime
-from random import randrange
 from time import sleep
 
 import requests
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 
 
 class Scraper:
